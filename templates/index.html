@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerPal – Career Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo">CP</div>
+      <div>
+        <h1>CareerPal</h1>
+        <p>Your voice-enabled career assistant</p>
+      </div>
+    </div>
+
+    <h3>Try these</h3>
+    <nav class="features">
+      <button class="feature" data-msg="Start a mock interview"><span>🎤</span><div><strong>Mock interview</strong><small>5 questions, scored feedback</small></div></button>
+      <button class="feature" data-msg="Review my CV"><span>📄</span><div><strong>CV review</strong><small>Paste your CV, get a score /100</small></div></button>
+      <button class="feature" data-msg="Career quiz"><span>🧭</span><div><strong>Career quiz</strong><small>Find careers that fit you</small></div></button>
+      <button class="feature" data-msg="How do I prepare for an interview?"><span>💡</span><div><strong>Interview tips</strong><small>Checklist &amp; STAR method</small></div></button>
+      <button class="feature" data-msg="How do I negotiate my salary?"><span>💰</span><div><strong>Salary</strong><small>Negotiation advice</small></div></button>
+      <button class="feature" data-msg="How can I improve my LinkedIn profile?"><span>🔗</span><div><strong>LinkedIn</strong><small>Profile &amp; networking</small></div></button>
+    </nav>
+
+    <h3>Voice settings</h3>
+    <div class="settings">
+      <label class="switch-row">
+        <span>Read replies aloud</span>
+        <input type="checkbox" id="autoSpeak" checked>
+      </label>
+      <label>Voice
+        <select id="voiceSelect"></select>
+      </label>
+      <label>Speed <output id="rateOut">1.0×</output>
+        <input type="range" id="rate" min="0.7" max="1.4" step="0.1" value="1">
+      </label>
+    </div>
+
+    <button id="resetBtn" class="reset">↺ New conversation</button>
+  </aside>
+
+  <main class="chat">
+    <header class="chat-header">
+      <button id="menuBtn" class="icon-btn menu-btn" aria-label="Menu">☰</button>
+      <div class="avatar bot-avatar">CP</div>
+      <div class="title">
+        <h2>CareerPal</h2>
+        <span class="status"><i></i>Online · voice enabled</span>
+      </div>
+      <button id="speakToggle" class="icon-btn" aria-label="Toggle voice output" title="Voice output on/off">🔊</button>
+    </header>
+
+    <div id="messages" class="messages" aria-live="polite"></div>
+
+    <div id="quick" class="quick"></div>
+
+    <form id="form" class="composer" autocomplete="off">
+      <button type="button" id="micBtn" class="mic" aria-label="Speak" title="Click and speak">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="22"/></svg>
+      </button>
+      <textarea id="input" rows="1" placeholder="Type a message or tap the mic and speak…"></textarea>
+      <button type="submit" class="send" aria-label="Send">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+    <div id="voiceHint" class="hint"></div>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
